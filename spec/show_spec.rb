@@ -7,7 +7,7 @@ describe Show do
     #TODO: You'll need to create a new migration to add
     #the necessary columns to the shows table
     Show.create(:name => "Community", :day => "Thursday", :season => "Winter")
-    community = Show.find_by("Community")
+    community = Show.find_by(:name => "Community")
     community.day.should eq("Thursday")
     community.season.should eq("Winter")
   end
