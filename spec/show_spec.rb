@@ -32,7 +32,7 @@ describe Show do
     show.name = "Gilmore Girls"
     show.genre = "Dramedy"
     show.save
-    dramedy = Show.find_by(:genre => "Dramedy").first
+    dramedy = Show.find_by(:genre => "Dramedy")
     dramedy.name.should eq("Gilmore Girls")
   end
 end
