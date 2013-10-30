@@ -18,6 +18,9 @@ characters. We want to model our database the same way.
 
 Fork and clone this repository, and get your rspec tests to pass.
 
+You have rake tasks available to you: `rake db:migrate` and `rake
+db:reset`. Don't forget to migrate your database!
+
 The rspec tests are complete and should not need to change. You'll be
 building migrations and filling in classes to get the tests to pass as
 described.
