@@ -4,8 +4,7 @@ describe Network do
   let(:network) { Network.new }
 
   it "has data attributes" do
-    Network.create(:channel => 4, :call_letters => "NBC")
-    nbc = Network.find_by(:call_letters => "NBC")
+    nbc = Network.create(:channel => 4, :call_letters => "NBC")
     nbc.channel.should eq(4)
     nbc.call_letters.should eq("NBC")
   end
