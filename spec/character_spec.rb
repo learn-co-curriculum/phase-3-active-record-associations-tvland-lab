@@ -3,8 +3,8 @@ require_relative 'spec_helper'
 describe Character do
 
   it "has data attributes" do
-    Character.create(:name => "Abed", :actor => "Danny Pudi")
-    Character.find_by(:name => "Abed").actor.should eq("Danny Pudi")
+    Character.create(:name => "Abed", :played_by => "Danny Pudi")
+    Character.find_by(:name => "Abed").played_by.should eq("Danny Pudi")
   end
 
   it "belongs to a show" do
