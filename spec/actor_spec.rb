@@ -11,6 +11,8 @@ describe "Actor" do
   end
 
   it "has associated characters in an array" do
+    # Hint: think about what migration you'll need to write so that an actor can have many characters.
+    # Where will the association foreign key go?
     pending "set up the appropriate association for characters and add characters through the array push"
   end
 
