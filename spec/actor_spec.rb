@@ -22,6 +22,10 @@ describe "Actor" do
     pending "in one line, build a show and a character for this actor"
   end
 
+  it "can list its full name" do
+    pending "create an instance method on actor called .full_name to return first and last name together"
+  end
+
   it "can list all of its shows and characters" do
     pending "create a list_roles method"
     # TODO: build a method on actor that will return a string in the form of
