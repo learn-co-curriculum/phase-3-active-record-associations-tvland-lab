@@ -30,4 +30,22 @@ describe Character do
     urkel.say_that_thing_you_say.should eq("#{urkel.name} always says: #{urkel.catchphrase}")
 
   end
+
+  it "can build its associated show" do
+    # if we define that character belongs_to show, we can do things like this:
+    jules_cobb = Character.new(:name => "Jules Cobb")
+    jules_cobb.build_show(:name => "Cougar Town")
+    jules_cobb.show.name.should eq("Cougar Town")
+  end
+
+  it "can chain-build associations to which it belongs" do
+    mal = Character.new(:name => "Malcolm Reynolds")
+    # We can use the build_xxx method all the way up a chain, 
+    # because each one returns an instance of that type of object
+    mal.build_show(:name => "Firefly").build_network(:call_letters => "Fox")
+    show = mal.show
+    show.name.should eq("Firefly")
+    show.network.call_letters.should eq("Fox")
+  end
+
 end

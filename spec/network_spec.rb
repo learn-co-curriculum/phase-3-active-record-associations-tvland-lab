@@ -16,6 +16,12 @@ describe Network do
     network.shows.count.should eq(1)
   end
 
+  it "can build an associated show" do
+    network.shows.build { Show.new(:name => "Community") }
+    network.save
+    network.shows.count.should eq(1)
+  end
+
   it "stops cancelling great shows" do
     network.call_letters = "NBC"
     pending "if anyone has contacts at NBC tell them to get their act together please"

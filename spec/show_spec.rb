@@ -11,7 +11,7 @@ describe Show do
     community.season.should eq("Winter")
   end
 
-  it "has many characters" do
+  it "has many characters in an array" do
     #TODO: we need to associate characters to shows. for reference
     #look how shows are associated with networks
     #pay attention to both the model and the migrations
@@ -21,10 +21,19 @@ describe Show do
       Character.new(:name => "Homer Simpson"),
       Character.new(:name => "Apu Nahasapeemapetilon")
     ]
+    # We can assign many characters to a show through the characters array with a push
     show.characters << characters
     show.save
     show.characters.count.should eq(3)
     show.characters.collect { |s| s.name }.should include("Homer Simpson")
+  end
+
+  it "can build its characters through a method" do
+    show.name = "Happy Endings"
+    # we can access the characters collection and call build there to build one
+    show.characters.build(:name => "Penny")
+    show.save
+    show.characters.count.should eq(1)
   end
 
   it "should have a genre" do
@@ -35,4 +44,11 @@ describe Show do
     dramedy = Show.find_by(:genre => "Dramedy")
     dramedy.name.should eq("Gilmore Girls")
   end
+
+   it "can build an associated network" do
+    # to do this, the show model has to define its relationship with network
+    show.build_network(:call_letters => "NBC")
+    show.network.call_letters.should eq("NBC")
+  end
+
 end
