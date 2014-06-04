@@ -1,6 +1,6 @@
 ---
 languages: ruby
-tags: ORM, ActiveRecord
+tags: ORM, ActiveRecord, associations
 ---
 
 # TV Land ActiveRecord Associations Lab
