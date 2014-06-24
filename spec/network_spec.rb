@@ -5,32 +5,26 @@ describe Network do
 
   it "has data attributes" do
     nbc = Network.create(:channel => 4, :call_letters => "NBC")
-    nbc.channel.should eq(4)
-    nbc.call_letters.should eq("NBC")
+    expect(nbc.channel).to eq(4)
+    expect(nbc.call_letters).to eq("NBC")
   end
 
   it "has many shows" do
     network.call_letters = "NBC"
     network.shows << Show.new(:name => "Community")
     network.save
-    network.shows.count.should eq(1)
+    expect(network.shows.count).to eq(1)
   end
 
   it "can build an associated show" do
     network.shows.build { Show.new(:name => "Community") }
     network.save
-    network.shows.count.should eq(1)
-  end
-
-  it "stops cancelling great shows" do
-    network.call_letters = "NBC"
-    pending "if anyone has contacts at NBC tell them to get their act together please"
-    # TODO: nothing. please don't try to implement this test!
+    expect(network.shows.count).to eq(1)
   end
 
   it "should have picked up John Mullaney's Pilot" do
     network.call_letters == "NBC"
-    network.sorry.should eq("We're sorry about passing on John Mullaney's pilot")
+    expect(network.sorry).to eq("We're sorry about passing on John Mullaney's pilot")
   end
 
 end
