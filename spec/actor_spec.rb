@@ -6,31 +6,44 @@ describe "Actor" do
 
   # HINTS: look at show_spec.rb and network_spec.rb and character_spec.rb for guidance
 
-  xit "has a first and last name" do
-    # TODO set up the basic data model for actor
+  it "has a first and last name" do
+    Actor.create(:first_name => "Keanu", :last_name => "Reeves")
+    expect(Actor.find_by(:first_name => "Keanu").last_name).to eq("Reeves")
   end
 
-  xit "has associated characters in an array" do
-    # Hint: think about what migration you'll need to write so that an actor can have many characters.
-    # Where will the association foreign key go?
-    # TODO set up the appropriate association for characters and add characters through the array push
+  it "has associated characters in an array" do
+    neo = Character.create(:name => "Neo")
+    keanu = Actor.create(:first_name => "Keanu", :last_name => "Reeves")
+    keanu.characters << neo
+    neo.reload
+    expect(keanu.characters).to include(neo)
+    expect(neo.actor).to eq(keanu)
   end
 
-  xit "can build its associated characters" do
-    # TODO add a character to an actor with a build method
+  it "can build its associated characters" do
+    alan_rickman = Actor.new(:first_name => "Alan", :last_name => "Rickman")
+    alan_rickman.characters.build(:name => "Severus Snape")
+    expect(alan_rickman.characters.first.name).to eq("Severus Snape")
   end
 
-  xit "can build its associated shows through its characters" do
-    # TODO in one line, build a show and a character for this actor
+  it "can build its associated shows through its characters" do
+    tina_fey = Actor.new(:first_name => "Tina", :last_name => "Fey")
+    tina_fey.characters.build(:name => "Liz Lemon").build_show(:name => "30 Rock")
+    characters = tina_fey.characters
+    expect(characters.first.name).to eq("Liz Lemon")
+    expect(characters.first.show.name).to eq("30 Rock")
   end
 
-  xit "can list its full name" do
-    # TODO create an instance method on actor called .full_name to return first and last name together
+  it "can list its full name" do
+    keanu = Actor.create(:first_name => "Keanu", :last_name => "Reeves")
+    expect(keanu.full_name).to eq("#{keanu.first_name} #{keanu.last_name}")
   end
 
-  xit "can list all of its shows and characters" do
-    # TODO create a list_roles method
-    # TODO: build a method on actor that will return a string in the form of
-    # character name - show name\n and test the results
+  it "can list all of its shows and characters" do
+    tina_fey = Actor.create(:first_name => "Tina", :last_name => "Fey")
+    tina_fey.characters.build(:name => "Liz Lemon").build_show(:name => "30 Rock")
+    tina_fey.characters.build(:name => "Herself").build_show(:name => "SNL")
+    tina_fey.save
+    expect(tina_fey.list_roles).to include("Herself - SNL")
   end
 end
