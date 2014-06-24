@@ -7,8 +7,8 @@ describe Show do
     #TODO: You'll need to create a new migration to add
     #the necessary columns to the shows table
     community = Show.create(:name => "Community", :day => "Thursday", :season => "Winter")
-    community.day.should eq("Thursday")
-    community.season.should eq("Winter")
+    expect(community.day).to eq("Thursday")
+    expect(community.season).to eq("Winter")
   end
 
   it "has many characters in an array" do
@@ -24,8 +24,8 @@ describe Show do
     # We can assign many characters to a show through the characters array with a push
     show.characters << characters
     show.save
-    show.characters.count.should eq(3)
-    show.characters.collect { |s| s.name }.should include("Homer Simpson")
+    expect(show.characters.count).to eq(3)
+    expect(show.characters.collect { |s| s.name }).to include("Homer Simpson")
   end
 
   it "can build its characters through a method" do
@@ -33,7 +33,7 @@ describe Show do
     # we can access the characters collection and call build there to build one
     show.characters.build(:name => "Penny")
     show.save
-    show.characters.count.should eq(1)
+    expect(show.characters.count).to eq(1)
   end
 
   it "should have a genre" do
@@ -42,13 +42,13 @@ describe Show do
     show.genre = "Dramedy"
     show.save
     dramedy = Show.find_by(:genre => "Dramedy")
-    dramedy.name.should eq("Gilmore Girls")
+    expect(dramedy.name).to eq("Gilmore Girls")
   end
 
    it "can build an associated network" do
     # to do this, the show model has to define its relationship with network
     show.build_network(:call_letters => "NBC")
-    show.network.call_letters.should eq("NBC")
+    expect(show.network.call_letters).to eq("NBC")
   end
 
 end
