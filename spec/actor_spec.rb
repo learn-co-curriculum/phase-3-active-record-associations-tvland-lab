@@ -1,49 +1,49 @@
 require_relative 'spec_helper'
 
 describe "Actor" do
-  #TODO: implement the tests as described in the it blocks,
-  #      and implement the class and migrations required to pass them
-
-  # HINTS: look at show_spec.rb and network_spec.rb and character_spec.rb for guidance
+  let(:tom_hanks) do
+    Actor.create(first_name: "Tom", last_name: "Hanks")
+  end
 
   it "has a first and last name" do
-    Actor.create(:first_name => "Keanu", :last_name => "Reeves")
-    expect(Actor.find_by(:first_name => "Keanu").last_name).to eq("Reeves")
+    expect(Actor.find_by(first_name: tom_hanks.first_name).first_name).to eq("Tom")
   end
 
   it "has associated characters in an array" do
-    neo = Character.create(:name => "Neo")
-    keanu = Actor.create(:first_name => "Keanu", :last_name => "Reeves")
-    keanu.characters << neo
-    neo.reload
-    expect(keanu.characters).to include(neo)
-    expect(neo.actor).to eq(keanu)
+    josh = Character.create(name: "Josh")
+    tom_hanks.characters << josh
+    expect(tom_hanks.characters).to include(Character.first)
   end
 
   it "can build its associated characters" do
-    alan_rickman = Actor.new(:first_name => "Alan", :last_name => "Rickman")
-    alan_rickman.characters.build(:name => "Severus Snape")
-    expect(alan_rickman.characters.first.name).to eq("Severus Snape")
+    tom_hanks.characters.build(name: "Forrest Gump").save
+    expect(tom_hanks.characters).to include(Character.find_by(name: "Forrest Gump"))
   end
 
   it "can build its associated shows through its characters" do
-    tina_fey = Actor.new(:first_name => "Tina", :last_name => "Fey")
-    tina_fey.characters.build(:name => "Liz Lemon").build_show(:name => "30 Rock")
-    characters = tina_fey.characters
-    expect(characters.first.name).to eq("Liz Lemon")
-    expect(characters.first.show.name).to eq("30 Rock")
+    tom_hanks.characters.build(name: "The Guy Who Saved Private Ryan").
+      build_show(name: "Saving Private Ryan")
+    tom_hanks.save
+
+    expect(tom_hanks.shows.first.name).to eq("Saving Private Ryan")
   end
 
   it "can list its full name" do
-    keanu = Actor.create(:first_name => "Keanu", :last_name => "Reeves")
-    expect(keanu.full_name).to eq("#{keanu.first_name} #{keanu.last_name}")
+    expect(tom_hanks.full_name).to eq("Tom Hanks")
   end
 
   it "can list all of its shows and characters" do
-    tina_fey = Actor.create(:first_name => "Tina", :last_name => "Fey")
-    tina_fey.characters.build(:name => "Liz Lemon").build_show(:name => "30 Rock")
-    tina_fey.characters.build(:name => "Herself").build_show(:name => "SNL")
-    tina_fey.save
-    expect(tina_fey.list_roles).to include("Herself - SNL")
+    tom_hanks.characters.build(name: "Josh").build_show(name: "Big")
+    tom_hanks.characters.build(name: "Forrest Gump").build_show(name: "Forrest Gump")
+    tom_hanks.characters.build(name: "Lost Dude Who Gets Forgotten").build_show(name: "Castaway")
+    tom_hanks.save
+
+    tom_roles = <<-ROLES
+Josh - Big
+Forrest Gump - Forrest Gump
+Lost Dude Who Gets Forgotten - Castaway
+    ROLES
+
+    expect(tom_hanks.list_roles).to eq(tom_roles)
   end
 end
