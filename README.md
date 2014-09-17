@@ -3,7 +3,7 @@ languages: ruby
 tags: ORM, ActiveRecord, associations
 ---
 
-# TV Land ActiveRecord Associations Lab
+## TV Land ActiveRecord Associations Lab
 
 This lab is focused on something none of us have time to watch
 anymore: TV. To keep track of what's out there, we'll build a small
@@ -14,7 +14,7 @@ If we think in regular English about the concept of a network,
 we'd say that a Network has many shows, and that each show has many
 characters. We want to model our database the same way.
 
-# Instructions
+## Instructions
 
 Fork and clone this repository, and get your rspec tests to pass.
 
@@ -37,7 +37,3 @@ the spec for actors and implement the actor model.
 Some of the specs have TODOs to help guide you. Some do not. You'll
 need to use what you know about ruby, objects, and ORMs to get them
 to pass.
-
-# Deliverable
-
-Push your solution to the `master` branch of your fork.
