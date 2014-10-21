@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe Character do
 
-  it "has data attributes" do
+  it "belongs to an actor" do
     danny_pudi = Actor.create(first_name: "Danny", last_name: "Pudi")
     abed = Character.create(name:'Abed', actor_id: danny_pudi.id)
     expect(Character.find_by(:name => "Abed").actor).to eq(danny_pudi)
