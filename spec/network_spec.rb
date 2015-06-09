@@ -26,5 +26,4 @@ describe Network do
     network.call_letters == "NBC"
     expect(network.sorry).to eq("We're sorry about passing on John Mullaney's pilot")
   end
-
 end
