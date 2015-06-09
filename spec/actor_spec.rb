@@ -1,36 +1,77 @@
 require_relative 'spec_helper'
 
 describe "Actor" do
+  let(:actor) {Actor.new}
   #TODO: implement the tests as described in the it blocks,
   #      and implement the class and migrations required to pass them
 
   # HINTS: look at show_spec.rb and network_spec.rb and character_spec.rb for guidance
 
-  xit "has a first and last name" do
+  it "has a first and last name" do
     # TODO set up the basic data model for actor
+    actor = Actor.create(:first_name => "Emilia", :last_name => "Clarke")
+
+    expect(actor.first_name).to eq("Emilia")
+    expect(actor.last_name).to eq("Clarke")
   end
 
-  xit "has associated characters in an array" do
+  it "has associated characters in an array" do
     # Hint: think about what migration you'll need to write so that an actor can have many characters.
     # Where will the association foreign key go?
-    # TODO set up the appropriate association for characters and add characters through the array push
+    emilia = Actor.new(:first_name => "Emilia", :last_name => "Clarke")
+    khaleesi = Character.new(:name => "Khaleesi")
+    khaleesi.actor = emilia
+    khaleesi.save
+    
+    khaleesi.reload
+    expect(emilia.characters).to include(khaleesi)
+    expect(khaleesi.actor).to eq(emilia)
   end
 
-  xit "can build its associated characters" do
-    # TODO add a character to an actor with a build method
+  it "can build its associated characters" do
+    emilia = Actor.new(:first_name => "Emilia", :last_name => "Clarke")
+    khaleesi = Character.new(:name => "Khaleesi")
+    khaleesi.actor = emilia
+    khaleesi.save
+
+    khaleesi.reload
+    expect(emilia.characters.first.name).to eq("Khaleesi")
   end
 
-  xit "can build its associated shows through its characters" do
-    # TODO in one line, build a show and a character for this actor
+  it "can build its associated shows through its characters" do
+    emilia = Actor.new(:first_name => "Emilia", :last_name => "Clarke")
+    khaleesi = Character.new(:name => "Khaleesi")
+    khaleesi.actor = emilia
+    got = Show.new(:name => "Game of Thrones")
+    khaleesi.show = got
+    khaleesi.save
+
+    khaleesi.reload
+    expect(khaleesi.show.name).to eq("Game of Thrones")
   end
 
-  xit "can list its full name" do
-    # TODO create an instance method on actor called .full_name to return first and last name together
+  it "can list its full name" do
+    # TODO create an instance method on actor called full_name to return first and 
+    #last name together
+    emilia = Actor.new(:first_name => "Emilia", :last_name => "Clarke")
+    emilia.save
+
+    emilia.reload
+    expect(emilia.full_name).to eq("Emilia Clarke")
   end
 
-  xit "can list all of its shows and characters" do
+  it "can list all of its shows and characters" do
     # TODO create a list_roles method
     # TODO: build a method on actor that will return a string in the form of
-    # character name - show name\n and test the results
+    # character name - show name
+    emilia = Actor.new(:first_name => "Emilia", :last_name => "Clarke")
+    khaleesi = Character.new(:name => "Khaleesi")
+    khaleesi.actor = emilia
+    got = Show.new(:name => "Game of Thrones")
+    khaleesi.show = got
+    khaleesi.save
+
+    khaleesi.reload
+    expect(emilia.list_roles).to eq("Khaleesi - Game of Thrones")
   end
 end
