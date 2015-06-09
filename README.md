@@ -1,9 +1,9 @@
----
-languages: ruby
-tags: ORM, ActiveRecord, associations
----
+# TV Land ActiveRecord Associations Lab
 
-## TV Land ActiveRecord Associations Lab
+## Objectives
+1. Creating and modifying tables using ActiveRecord
+2. Writing associations between models
+
 
 This lab is focused on something none of us have time to watch
 anymore: TV. To keep track of what's out there, we'll build a small
@@ -25,14 +25,9 @@ The rspec tests are complete and should not need to change. You'll be
 building migrations and filling in classes to get the tests to pass as
 described.
 
-Look at `spec/network_spec`, `app/models/network.rb`, and `db/migrate`
-files to guide you. The network part of this lab is complete, the tests
-pass, and the migrations are done. Use all of this as a reference
-as you build out Show and Character.
-
-You'll need to implement the code to pass the network, show, and
-character specs, and then you'll need to use that knowledge to finish
-the spec for actors and implement the actor model.
+Look at the spec files to guide you. The network model and migrations are 
+complete. Use these as a reference as you biuld out Actors, Characters 
+and Shows.
 
 Some of the specs have TODOs to help guide you. Some do not. You'll
 need to use what you know about ruby, objects, and ORMs to get them
