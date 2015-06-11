@@ -22,7 +22,7 @@ describe "Actor" do
     khaleesi = Character.new(:name => "Khaleesi")
     khaleesi.actor = emilia
     khaleesi.save
-
+    
     khaleesi.reload
     expect(emilia.characters).to include(khaleesi)
     expect(khaleesi.actor).to eq(emilia)
@@ -51,7 +51,7 @@ describe "Actor" do
   end
 
   it "can list its full name" do
-    # TODO create an instance method on actor called full_name to return first and
+    # TODO create an instance method on actor called full_name to return first and 
     #last name together
     emilia = Actor.new(:first_name => "Emilia", :last_name => "Clarke")
     emilia.save
@@ -62,8 +62,8 @@ describe "Actor" do
 
   it "can list all of its shows and characters" do
     # TODO create a list_roles method
-    # TODO: build a method on actor that will return an array of
-    # strings in the form "#{character_name} - #{show_name}"
+    # TODO: build a method on actor that will return a string in the form of
+    # character name - show name
     emilia = Actor.new(:first_name => "Emilia", :last_name => "Clarke")
     khaleesi = Character.new(:name => "Khaleesi")
     khaleesi.actor = emilia
@@ -72,6 +72,6 @@ describe "Actor" do
     khaleesi.save
 
     khaleesi.reload
-    expect(emilia.list_roles).to include("Khaleesi - Game of Thrones")
+    expect(emilia.list_roles).to eq("Khaleesi - Game of Thrones")
   end
 end
