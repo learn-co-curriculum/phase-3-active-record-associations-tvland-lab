@@ -50,5 +50,4 @@ describe Show do
     show.build_network(:call_letters => "NBC")
     expect(show.network.call_letters).to eq("NBC")
   end
-
 end
