@@ -1,6 +1,7 @@
 require_relative 'spec_helper'
 
 describe "Actor" do
+
   let(:actor) {Actor.new}
   #TODO: implement the tests as described in the it blocks,
   #      and implement the class and migrations required to pass them
