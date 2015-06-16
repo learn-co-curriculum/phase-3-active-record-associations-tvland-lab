@@ -1,3 +1,3 @@
-class Character
-
+class Character < ActiveRecord::Base
+  
 end
