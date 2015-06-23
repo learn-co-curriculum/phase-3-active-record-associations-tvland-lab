@@ -4,7 +4,7 @@
 
 The first spec in this lab is testing if your Actor model has the attributes first and last name, but the error message you are getting is `Could not find table actors` as seen below:
 
-```bash
+```ruby
 Actor
   has a first and last name (FAILED - 1)
 
@@ -28,7 +28,7 @@ end
 ```
 After running `rake:db migrate` and `rspec` you should get this error:
 
-```bash
+```ruby
 Actor
   has a first and last name
   has associated characters in an array (FAILED - 1)
@@ -55,7 +55,7 @@ end
 ```
 Run `rake db:migrate` and `rspec` again. Now you will notice the test is still not passing, but you have a new error message.
 
-```bash
+```ruby
 Actor
   has a first and last name
   has associated characters in an array (FAILED - 1)
@@ -81,7 +81,7 @@ We created the Actor and Character tabels in the database but we did not add the
 
 Your new error message now is:
 
-```bash
+```ruby
 Actor
   has a first and last name
   has associated characters in an array (FAILED - 1)
@@ -107,7 +107,7 @@ end
 ```
 You should have 3 test passing now for the Actor spec.
 
-```bash
+```ruby
 Actor
   has a first and last name
   has associated characters in an array
@@ -145,7 +145,7 @@ end
 ```
 Run `rspec`, your new error should be: 
 
-```bash
+```ruby
 Actor
   has a first and last name
   has associated characters in an array
@@ -171,7 +171,7 @@ It's time to write a method called `full_name` in your Actor model.
 
 Your last error in the Actor spec is:
 
-```bash
+```ruby
 Actor
   has a first and last name
   has associated characters in an array
@@ -194,8 +194,7 @@ Lets write the list_roles method in our actor model.
 def list_roles
 end
 ```
-
-```bash
+```ruby
 Actor
   has a first and last name
   has associated characters in an array
@@ -230,7 +229,7 @@ def list_roles
 
 After passing all the test for the Actor model, the first two of your test for the Character model should also pass.
 
-```bash
+```ruby
 Character
   belongs to an actor
   belongs to a show
@@ -262,7 +261,7 @@ end
 ```
 Run rspec again
 
-```bash
+```ruby
 Character
   belongs to an actor
   belongs to a show
@@ -306,7 +305,7 @@ end
 
 Your last test in this lab 
 
-```bash
+```ruby
 Show
   has data attributes
   has many characters in an array
