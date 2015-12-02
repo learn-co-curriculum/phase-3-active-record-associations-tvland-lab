@@ -39,3 +39,5 @@ We've given you a few migrations in the `db/migrate` direcotry to create the net
 * Rails Guide - [Active Record Associations](http://guides.rubyonrails.org/association_basics.html)
 * Api dock - [Active Record Associations](http://apidock.com/rails/ActiveRecord/Associations)
 * Rails Guide - [Active Record Migrations](http://edgeguides.rubyonrails.org/active_record_migrations.html)
+
+<a href='https://learn.co/lessons/activerecord-tvland' data-visibility='hidden'>View this lesson on Learn.co</a>
