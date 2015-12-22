@@ -21,7 +21,7 @@ We've given you a few migrations in the `db/migrate` direcotry to create the net
 
 ### `spec/actor_spec.rb` and `spec/character_spec.rb`
 
-* Write a mgiration for the actors table. An actor should have a `first_name` and a `last_name`. 
+* Write a migration for the actors table. An actor should have a `first_name` and a `last_name`. 
 * Write a migration for the characters table. A character should have a `name` and a `show_id`––a character will belong to a show. 
 * Associate the `Actor` model with the `Character` and `Show` model. An actor should have many characters and many shows through characters. 
 * Write a method in the `Actor` class, `#full_name`, that returns the first and last name of an actor. 
