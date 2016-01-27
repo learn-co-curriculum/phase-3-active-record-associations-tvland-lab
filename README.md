@@ -13,7 +13,7 @@ In this lab, we'll be working with a TV show domain model. We will have a show, 
 * A character belongs to an actor and belongs to a show. 
 * A show has many characters and has many actors through characters. 
 
-We've given you a few migrations in the `db/migrate` direcotry to create the networks and shows table, but you'll have to add additional tables and modify these existing tables as per the guidelines below. 
+We've given you a few migrations in the `db/migrate` directory to create the networks and shows table, but you'll have to add additional tables and modify these existing tables as per the guidelines below. 
 
 **Remember to run `rake db:migrate` in the terminal before you run your tests and after you make any new migrations!**
 
