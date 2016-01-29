@@ -40,4 +40,4 @@ We've given you a few migrations in the `db/migrate` directory to create the net
 * Api dock - [Active Record Associations](http://apidock.com/rails/ActiveRecord/Associations)
 * Rails Guide - [Active Record Migrations](http://edgeguides.rubyonrails.org/active_record_migrations.html)
 
-<a href='https://learn.co/lessons/activerecord-tvland' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/activerecord-tvland' title='TV Land ActiveRecord Associations Lab'>TV Land ActiveRecord Associations Lab</a> on Learn.co and start learning to code for free.</p>
