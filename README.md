@@ -34,6 +34,16 @@ We've given you a few migrations in the `db/migrate` directory to create the net
 * Write a migration for the shows table. A show should have a name and a genre. 
 * Create the neccesary associations between shows, networks, and characters. 
 
+### Active Record 5.x Migrations Versioning
+
+***NOTE***: As of Active Record 5.x, we can no longer inherit directly from `ActiveRecord::Migration` and must instead specify which version of Active Record / Rails the migration was written for. If we were writing a migration for Active Record 5.1, we would inherit from `ActiveRecord::Migration[5.1]`. Don't worry too much about this until you get to the Rails section. Until then, if you encounter an error like this...
+```
+StandardError: Directly inheriting from ActiveRecord::Migration is not supported. Please specify the Rails release the migration was written for:
+
+  class CreateDogs < ActiveRecord::Migration[4.2]
+```
+...simply add `[4.2]` to the end of `ActiveRecord::Migration`, exactly as the error message instructs.
+
 
 ## Resources
 * Rails Guide - [Active Record Associations](http://guides.rubyonrails.org/association_basics.html)
