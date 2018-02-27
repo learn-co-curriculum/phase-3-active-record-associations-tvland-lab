@@ -23,6 +23,16 @@
 1. Create the neccesary associations between shows, networks, and characters.
 2. Add all the attributes to the Show model that the spec requires.
 
+## Active Record 5.x migration syntax update
+
+***NOTE***: As of Active Record 5.x, we can no longer inherit directly from `ActiveRecord::Migration` and must instead specify which version of Active Record / Rails the migration was written for. If we were writing a migration for Active Record 5.1, we would inherit from `ActiveRecord::Migration[5.1]`. Don't worry too much about this until you get to the Rails section. Until then, if you encounter an error like this...
+```
+StandardError: Directly inheriting from ActiveRecord::Migration is not supported. Please specify the Rails release the migration was written for:
+
+  class CreateDogs < ActiveRecord::Migration[4.2]
+```
+...simply add `[4.2]` to the end of `ActiveRecord::Migration`, exactly as the error message instructs.
+
 ## Resources
 + Rails Guide - [Active Record Associations](http://guides.rubyonrails.org/association_basics.html)
 + Api dock - [Active Record Associations](http://apidock.com/rails/ActiveRecord/Associations)
