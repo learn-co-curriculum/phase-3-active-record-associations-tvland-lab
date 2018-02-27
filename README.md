@@ -110,6 +110,16 @@ migration should add a `day` column to indicate which day of the week the show
 is on, a `genre` column for the show genre, and `season` to indicate which
 season the show is currently on. All three should be strings.
 
+## Active Record 5.x migration syntax update
+
+***NOTE***: As of Active Record 5.x, we can no longer inherit directly from `ActiveRecord::Migration` and must instead specify which version of Active Record / Rails the migration was written for. If we were writing a migration for Active Record 5.1, we would inherit from `ActiveRecord::Migration[5.1]`. Don't worry too much about this until you get to the Rails section. Until then, if you encounter an error like this...
+```
+StandardError: Directly inheriting from ActiveRecord::Migration is not supported. Please specify the Rails release the migration was written for:
+
+  class CreateDogs < ActiveRecord::Migration[4.2]
+```
+...simply add `[4.2]` to the end of `ActiveRecord::Migration`, exactly as the error message instructs.
+
 ## Resources
 
 - Rails Guide - [Active Record Associations](http://guides.rubyonrails.org/association_basics.html)
