@@ -22,6 +22,19 @@ describe Show do
     expect(show.characters.collect { |s| s.name }).to include("Homer Simpson")
   end
 
+  it "has an #actors_list method that returns a list of the full names of each actor associated with the show" do
+    show.name = "The Walking Dead"
+    character = Character.new(:name => "Rick Grimes")
+    andrew = Actor.new(first_name: "Andrew", last_name: "Lincoln")
+    character.actor = andrew
+    show.characters << character
+    show.save
+
+    expect(show.actors_list.length).to eq(1)
+    expect(show.actors_list).to include('Andrew Lincoln')
+
+  end
+
   it "can build its characters through a method" do
     show.name = "Happy Endings"
     show.characters.build(:name => "Penny")
