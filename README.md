@@ -79,9 +79,14 @@ or a model configured.
     #=> 'Tyrion Lannister always says: A Lannister always pays his debts'
     ```
 
+- Define a method in the `Show` class called `#actors_list` that returns an
+  Array of the full names of each actor associated with the a show. Remember,
+  a show should have many actors through characters.
+
 - While we've connected shows, characters and actors together, we haven't
   connected these models to the existing network model. Update the associations
-  so that a show belongs to a network.
+  so that a show belongs to a network. In the network model, an association has
+  already been added so that a network has many shows.
 
   **Note**: Once connected, this allows us to do some interesting things, like
   chain-building. We could, for instance, create a character, and with that
