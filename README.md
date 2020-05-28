@@ -115,5 +115,3 @@ season the show is currently on. All three should be strings.
 - Rails Guide - [Active Record Associations](http://guides.rubyonrails.org/association_basics.html)
 - API dock - [Active Record Associations](http://apidock.com/rails/ActiveRecord/Associations)
 - Rails Guide - [Active Record Migrations](http://edgeguides.rubyonrails.org/active_record_migrations.html)
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/activerecord-tvland' title='TV Land ActiveRecord Associations Lab'>TV Land ActiveRecord Associations Lab</a> on Learn.co and start learning to code for free.</p>
