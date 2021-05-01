@@ -1,11 +1,11 @@
-# TV Land Active Record Associations Lab
+# Active Record TV Land Lab
 
-## Objectives
+## Learning Goals
 
-- Create and modify tables using Active Record migrations.
-- Build associations between models using Active Record macros.
+- Create and modify tables using Active Record migrations
+- Build associations between models using Active Record macros
 
-## Overview
+## Introduction
 
 In this lab, we'll be working with a TV show domain model. We will have a show,
 network, and character model. They will be associated in the following way:
