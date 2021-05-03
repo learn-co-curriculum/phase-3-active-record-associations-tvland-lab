@@ -65,9 +65,7 @@ or a model configured.
   And then, when we run `peter.list_roles`, we would get an Array containing a
   string with both the character and the show:
 
-    ```ruby
-    ['Tyrion Lannister - Game of Thrones']
-    ```
+    `['Tyrion Lannister - Game of Thrones']`
 
 - Define a method in the `Character` class, `#say_that_thing_you_say`, using a
   given character's catchphrase. Using Tyrion as an example again, the returned
