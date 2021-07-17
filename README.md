@@ -14,6 +14,11 @@ network, and character model. They will be associated in the following way:
 - A character belongs to an actor and belongs to a show.
 - A show has many characters and has many actors through characters.
 
+Here's what the completed ERD will look like after you've created the additional
+migrations:
+
+![TVLand ERD](https://curriculum-content.s3.amazonaws.com/phase-3/active-record-associations-tvland-lab/tvland-erd.png)
+
 We've given you a few migrations in the `db/migrate` directory to create the
 networks and shows table, but you'll have to add additional tables and modify
 these existing tables as per the guidelines below.
