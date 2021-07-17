@@ -116,6 +116,6 @@ Write a migration that adds the column `catchphrase` as a string to your
 
 ## Resources
 
-- Rails Guide - [Active Record Associations](http://guides.rubyonrails.org/association_basics.html)
-- API dock - [Active Record Associations](http://apidock.com/rails/ActiveRecord/Associations)
-- Rails Guide - [Active Record Migrations](http://edgeguides.rubyonrails.org/active_record_migrations.html)
+- [Active Record Associations](http://guides.rubyonrails.org/association_basics.html)
+- [API dock - Active Record Associations](https://apidock.com/rails/ActiveRecord/Associations/ClassMethods)
+- [Active Record Migrations](https://guides.rubyonrails.org/active_record_migrations.html)
