@@ -11,7 +11,7 @@ describe Show do
       Character.create(name: "Ralph Wiggum", show_id: simpsons.id)
       Character.create(name: "Homer Simpson", show_id: simpsons.id)
       Character.create(name: "Apu Nahasapeemapetilon", show_id: simpsons.id)
-      expect(show.characters.count).to eq(3)
+      expect(simpsons.characters.count).to eq(3)
     end
 
     it "can be used to build its characters" do

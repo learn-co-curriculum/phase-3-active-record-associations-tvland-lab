@@ -20,8 +20,9 @@ these existing tables as per the guidelines below.
 
 ## Instructions
 
-This lab is test-driven. Start by completing the migrations. The first three migration
-files are complete. You only need to work on the `004`, `005` and `006` migrations.
+This lab is test-driven, so run `learn test` to see what you need to work on.
+Start by completing the migrations. The first three migration files are
+complete. You only need to work on the `004`, `005` and `006` migrations.
 
 Then, work on building out methods in the classes. Make sure to use the Active Record
 association macros like `has_many` and `belongs_to`. Remember, using these macros
@@ -51,13 +52,31 @@ Write a migration that adds the column `catchphrase` as a string to your
 
 ### Model Methods
 
+#### Character
+
+- `#actor`: should return the actor instance this character belongs to.
+  **Hint**: is there an association macro you can use to create this method?
+- `#show`: should return the show instance this character belongs to. **Hint**:
+  is there an association macro you can use to create this method?
+- `#say_that_thing_you_say`: Define a method in the `Character` class, `#say_that_thing_you_say`, using a
+  given character's catchphrase. Using Tyrion as an example again, the returned
+  string should look like the following:
+
+  ```ruby
+  tyrion.catchphrase = 'A Lannister always pays his debts'
+  tyrion.say_that_thing_you_say
+  #=> 'Tyrion Lannister always says: A Lannister always pays his debts'
+  ```
+
 #### Actor
 
 - `#characters`: an actor has many characters, so write code that creates an
   instance method that will return all the characters that the actor has played.
+  **Hint**: is there an association macro you can use to create this method?
 - `#shows`: an actor should have many characters and many shows through
   characters. Write code that creates an instance method that returns all the
-  shows for the actor.
+  shows for the actor. **Hint**: is there an association macro you can use to
+  create this method?
 - `#full_name`: Write a method in the `Actor` class, `#full_name`, that returns
   the first and last name of an actor.
 - `#list_roles`: Write a method in the `Actor` class, `#list_roles`, that lists
@@ -78,20 +97,6 @@ Write a migration that adds the column `catchphrase` as a string to your
   Notice that when we run `peter.list_roles`, we get an Array containing a
   string with both the character and the show.
 
-#### Character
-
-- `#actor`: should return the actor instance this character belongs to.
-- `#show`: should return the show instance this character belongs to.
-- `#say_that_thing_you_say`: Define a method in the `Character` class, `#say_that_thing_you_say`, using a
-  given character's catchphrase. Using Tyrion as an example again, the returned
-  string should look like the following:
-
-  ```ruby
-  tyrion.catchphrase = 'A Lannister always pays his debts'
-  tyrion.say_that_thing_you_say
-  #=> 'Tyrion Lannister always says: A Lannister always pays his debts'
-  ```
-
 #### Show
 
 - `#characters`: should return a list of all the characters instances associated with
@@ -99,7 +104,8 @@ Write a migration that adds the column `catchphrase` as a string to your
 - `#network`: should return the network instance this show belongs to
 - `#actors_list`: Define a method in the `Show` class called `#actors_list` that
   returns an Array of the full names of each actor associated with the a show.
-  Remember, a show should have many actors through characters.
+  Remember, a show should have many actors through characters. **Hint**: it may
+  help to use another association macro to access the actors for the show.
 
 #### Network
 

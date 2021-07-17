@@ -1,10 +1,12 @@
+require "pry"
+
 describe Actor do
   let(:emilia) { Actor.first }
 
   before do
     emilia = Actor.create(first_name: "Emilia", last_name: "Clarke")
-    Character.create(name: "Khaleesi", actor_id: emilia.id)
-    Show.new(name: "Game of Thrones")
+    got = Show.create(name: "Game of Thrones")
+    Character.create(name: "Khaleesi", actor_id: emilia.id, show_id: got.id)
   end
 
   it "has a first and last name" do
