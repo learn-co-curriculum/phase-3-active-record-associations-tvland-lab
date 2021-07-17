@@ -1,33 +1,19 @@
 ENV['RACK_ENV'] = 'test'
 require_relative "../config/environment"
 require "sinatra/activerecord/rake"
-require "pry"
 
 RSpec.configure do |config|
   # Database setup
-  if ActiveRecord::Base.connection.migration_context.needs_migration?
-    # Run migrations for test environment
-    Rake::Task["db:migrate"].execute
-  end
 
   config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each, js: true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before do
-    DatabaseCleaner.start
-  end
-
-  config.after do
-    DatabaseCleaner.clean
+  config.around do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
   end
 
   config.expect_with :rspec do |expectations|
@@ -41,10 +27,11 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
 
-def migrate!(version)
+def migrate!(direction, version)
+  migrations_paths = ActiveRecord::Migrator.migrations_paths
+  migrations = ActiveRecord::MigrationContext.new(migrations_paths, ActiveRecord::SchemaMigration).migrations
+  
   ActiveRecord::Migration.suppress_messages do
-    migrations_paths = ActiveRecord::Migrator.migrations_paths
-    migration_context = ActiveRecord::MigrationContext.new(migrations_paths, ActiveRecord::SchemaMigration)
-    migration_context.migrate(version)
+    ActiveRecord::Migrator.new(direction, migrations, ActiveRecord::SchemaMigration, version).migrate
   end
 end

@@ -30,12 +30,6 @@ describe Character do
       jules_cobb.build_show(name: "Cougar Town")
       expect(jules_cobb.show.name).to eq("Cougar Town")
     end
-
-    it "can be used to chain-build a network for its associated show" do
-      malcolm = Character.new(name: "Malcolm Reynolds")
-      malcolm.build_show(name: "Firefly").build_network(call_letters: "Fox")
-      expect(malcolm.show.network.call_letters).to eq("Fox")
-    end
   end
 
   describe "#say_that_thing_you_say" do
