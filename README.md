@@ -58,9 +58,9 @@ Write a migration that adds the column `catchphrase` as a string to your
   **Hint**: is there an association macro you can use to create this method?
 - `#show`: should return the show instance this character belongs to. **Hint**:
   is there an association macro you can use to create this method?
-- `#say_that_thing_you_say`: Define a method in the `Character` class, `#say_that_thing_you_say`, using a
-  given character's catchphrase. Using Tyrion as an example again, the returned
-  string should look like the following:
+- `#say_that_thing_you_say`: Define a method in the `Character` class,
+  `#say_that_thing_you_say`, using a given character's catchphrase. Using Tyrion
+  as an example again, the returned string should look like the following:
 
   ```ruby
   tyrion.catchphrase = 'A Lannister always pays his debts'
