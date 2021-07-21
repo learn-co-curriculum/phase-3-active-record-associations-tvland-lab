@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/node
 
 .DS_Store
@@ -44,6 +43,3 @@ jspm_packages
 /log/*
 !/log/.keep
 /tmp
-=======
-
->>>>>>> Add db to correct solution

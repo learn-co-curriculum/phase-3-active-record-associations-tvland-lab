@@ -1,6 +1,0 @@
-languages:
-  - ruby
-tags:
-  - ORM
-  - ActiveRecord
-  - associations
