@@ -104,11 +104,11 @@ Write a migration that adds the column `catchphrase` as a string to your
 
 #### Show
 
-- `#characters`: should return a list of all the characters instances associated with
+- `#characters`: should return a list of all the character instances associated with
   the show.
 - `#network`: should return the network instance this show belongs to
 - `#actors_list`: Define a method in the `Show` class called `#actors_list` that
-  returns an Array of the full names of each actor associated with the a show.
+  returns an Array of the full names of each actor associated with a show.
   Remember, a show should have many actors through characters. **Hint**: it may
   help to use another association macro to access the actors for the show.
 
