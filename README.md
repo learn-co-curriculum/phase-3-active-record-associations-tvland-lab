@@ -25,14 +25,17 @@ these existing tables as per the guidelines below.
 
 ## Instructions
 
-This lab is test-driven, so run `learn test` to see what you need to work on.
-Start by completing the migrations. The first three migration files are
-complete. You only need to work on the `004`, `005` and `006` migrations.
+**Note**: This lab is test-driven, but in order for the tests to run correctly,
+you need to complete **all** of the migration files before running `learn test`.
+The first three migration files have been done already. You only need to work on
+the `004`, `005` and `006` migrations.
 
-Then, work on building out methods in the classes. Make sure to use the Active Record
-association macros like `has_many` and `belongs_to`. Remember, using these macros
-creates **instance methods** on your classes, so to pass some of the tests, the macros
-will be enough! You'll also have to write out some custom methods as well.
+Once you've completed the migrations and have the first set of tests passing,
+work on building out methods in the classes. Make sure to use the Active Record
+association macros like `has_many` and `belongs_to`. Remember, using these
+macros creates **instance methods** on your classes, so to pass some of the
+tests, the macros will be enough! You'll also have to write out some custom
+methods as well.
 
 ### Migrations
 
@@ -54,6 +57,9 @@ columns.
 
 Write a migration that adds the column `catchphrase` as a string to your
 `characters` table.
+
+**Once you've completed all three migrations, go ahead and run `learn test` to
+see what you need to do for the models.**
 
 ### Model Methods
 
