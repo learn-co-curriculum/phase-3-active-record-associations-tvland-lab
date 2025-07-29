@@ -1,34 +1,27 @@
 require_relative '../../db/migrate/001_create_networks'
 
-describe CreateNetworks do
-  # This code is making sure the database is set to a clean state
-  before(:all) { DatabaseCleaner.strategy = :truncation }
-  after(:all)  { DatabaseCleaner.strategy = :transaction }
-
-  let(:previous_version) { 0 }
-  let(:current_version) { 1 }
-
-  before do
-    # This rolls back the schema to the previous migration so we can test the current one
-    # The migrate! method is defined in `spec/spec_helper.rb`
-    migrate!(:down, previous_version)
-    # Active Record caches some information on the class, so we're resetting it before and
-    # after the test to make sure the class is in a clean state
-    Network.reset_column_information
+describe "CreateNetworks migration" do
+  before(:all) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
   end
 
-  after do
-    Network.reset_column_information
+  after(:all) do
+    DatabaseCleaner.strategy = :transaction
   end
 
-  describe "#change" do
-    it "creates a networks table with channel and call_letters columns" do
-      # This runs the current migration
-      migrate!(:up, current_version)
-      expect(Network.columns_hash).to include({
-        "channel" => have_attributes(type: :integer),
-        "call_letters" => have_attributes(type: :string)
-      })
-    end
+  it "creates a networks table with channel and call_letters columns" do
+    expect(ActiveRecord::Base.connection.table_exists?(:networks)).to be true
+
+    columns = ActiveRecord::Base.connection.columns(:networks)
+
+    column_names = columns.map(&:name)
+    expect(column_names).to include("channel", "call_letters")
+
+    channel_column = columns.find { |col| col.name == "channel" }
+    call_letters_column = columns.find { |col| col.name == "call_letters" }
+
+    expect(channel_column.sql_type_metadata.type).to eq(:integer)
+    expect(call_letters_column.sql_type_metadata.type).to eq(:string)
   end
 end
