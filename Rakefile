@@ -9,3 +9,9 @@ task :console do
   # Open a Pry session
   Pry.start
 end
+
+namespace :db do
+  task :migrate => :environment do
+    Rake::Task["db:schema:dump"].invoke
+  end
+end
